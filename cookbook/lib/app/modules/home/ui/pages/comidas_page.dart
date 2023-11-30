@@ -55,8 +55,8 @@ class ComidasPageState extends State<ComidasPage> {
                       ),
                     ),
                     onTap: () {
-                      Navigator.pushNamed(context, "/receita_comida",
-                          arguments: store.comidas![index]);
+                      Navigator.pushNamed(context, "/receitas",
+                          arguments: store.comidas![index].id);
                     },
                   );
                 }),

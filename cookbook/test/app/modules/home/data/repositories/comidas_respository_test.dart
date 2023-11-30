@@ -1,4 +1,4 @@
-import 'package:cookbook/app/modules/home/data/datasources/Comidas_datasource.dart';
+import 'package:cookbook/app/modules/home/data/datasources/comidas_datasource.dart';
 import 'package:cookbook/app/modules/home/data/models/comida.dart';
 import 'package:cookbook/app/modules/home/data/repositories/comidas_repository.dart';
 import 'package:cookbook/app/modules/home/interactor/states/comida_state.dart';
@@ -31,7 +31,7 @@ void main() {
 
     test("Deve retornar um ErrorComidasState se houver excessões", () async {
       when(() => comidasDatasource.get("Seafood"))
-          .thenAnswer((_) async => Exception);
+          .thenAnswer((_) async => Exception());
       final result = await comidasRespository.get("Seafood");
       expect(result, isA<ErrorExceptionComidaState>());
     });

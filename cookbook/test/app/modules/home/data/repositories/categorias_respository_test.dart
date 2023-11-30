@@ -30,7 +30,8 @@ void main() {
     });
 
     test("Deve retornar um ErrorCategoriaState se houver excessões", () async {
-      when(() => categoriaDatasource.get()).thenAnswer((_) async => Exception);
+      when(() => categoriaDatasource.get())
+          .thenAnswer((_) async => Exception());
       final result = await categoriaRespository.get();
       expect(result, isA<ErrorExceptionCategoriaState>());
     });
