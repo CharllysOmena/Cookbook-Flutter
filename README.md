@@ -22,7 +22,7 @@ Esse projeto foi desenvolvido utilizando flutter com o intuito de demonstrar o c
 * [Firebase_auth](https://pub.dev/packages/firebase_auth)
 * [Firebase_core](https://pub.dev/packages/firebase_core)
 * [Cloud_firestore](https://pub.dev/packages/cloud_firestore)
-* [Mocktail]([https://pub.dev/packages/dio](https://pub.dev/packages/mocktail))
+* [Mocktail](https://pub.dev/packages/mocktail)
 
 ## API utilizada
 
