@@ -14,12 +14,15 @@ Esse projeto foi desenvolvido utilizando flutter com o intuito de demonstrar o c
 
 ## Pacotes utilizados
 
-* [Http](https://pub.dev/packages/http)
-* [Provider](https://pub.dev/packages/provider)
+* [Dio](https://pub.dev/packages/dio)
+* [Modular](https://pub.dev/packages/flutter_modular)
+* [Mobx]([https://pub.dev/packages/http](https://pub.dev/packages/mobx))
+* [flutter_mobx]([https://pub.dev/packages/provider](https://pub.dev/packages/flutter_mobx/install))
 * [Email_validator](https://pub.dev/packages/email_validator)
 * [Firebase_auth](https://pub.dev/packages/firebase_auth)
 * [Firebase_core](https://pub.dev/packages/firebase_core)
 * [Cloud_firestore](https://pub.dev/packages/cloud_firestore)
+* [Mocktail]([https://pub.dev/packages/dio](https://pub.dev/packages/mocktail))
 
 ## API utilizada
 
