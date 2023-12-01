@@ -24,8 +24,8 @@ void main() {
       final result = await receitasRespository.get("52772");
       expect(result, isA<SuccessReceitaState>());
       if (result is SuccessReceitaState) {
-        List<Receita> receitas = result.receitas;
-        expect(receitas, isNotEmpty);
+        Receita receita = result.receita!;
+        expect(receita, isNotEmpty);
       }
     });
 

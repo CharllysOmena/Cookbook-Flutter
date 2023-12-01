@@ -10,3 +10,14 @@ class ReceitaAdapter {
         url: data["strMealThumb"],
       );
 }
+
+class ReceitaAdapter2 {
+  ReceitaAdapter2._();
+
+  static Receita fromJson(dynamic data) => Receita(
+        nome: data["nome"],
+        id: data["id"],
+        instrucoes: data["instrucoes"],
+        url: data["url"],
+      );
+}

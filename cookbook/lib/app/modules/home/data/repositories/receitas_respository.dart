@@ -14,12 +14,12 @@ class ReceitasRepository implements IReceitasRepository {
 
   @override
   Future<ReceitaState> get(String id) async {
-    List<Receita> receitas;
+    Receita receita;
     try {
       var response = await receitasDatasource.get(id);
       List<dynamic> body = response["meals"];
-      receitas = body.map((json) => ReceitaAdapter.fromJson(json)).toList();
-      return SuccessReceitaState(receitas: receitas);
+      receita = ReceitaAdapter.fromJson(body[0]);
+      return SuccessReceitaState(receita: receita);
     } catch (e) {
       return const ErrorExceptionReceitaState();
     }

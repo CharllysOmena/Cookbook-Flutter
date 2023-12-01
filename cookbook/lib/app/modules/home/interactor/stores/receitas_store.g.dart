@@ -25,18 +25,62 @@ mixin _$ReceitasStore on _ReceitasStoreBase, Store {
     });
   }
 
-  late final _$getReceitasAsyncAction =
-      AsyncAction('_ReceitasStoreBase.getReceitas', context: context);
+  late final _$isFavoriteAtom =
+      Atom(name: '_ReceitasStoreBase.isFavorite', context: context);
 
   @override
-  Future<dynamic> getReceitas(String id) {
-    return _$getReceitasAsyncAction.run(() => super.getReceitas(id));
+  bool? get isFavorite {
+    _$isFavoriteAtom.reportRead();
+    return super.isFavorite;
+  }
+
+  @override
+  set isFavorite(bool? value) {
+    _$isFavoriteAtom.reportWrite(value, super.isFavorite, () {
+      super.isFavorite = value;
+    });
+  }
+
+  late final _$getReceitaAsyncAction =
+      AsyncAction('_ReceitasStoreBase.getReceita', context: context);
+
+  @override
+  Future<dynamic> getReceita(String id) {
+    return _$getReceitaAsyncAction.run(() => super.getReceita(id));
+  }
+
+  late final _$favoritarReceitaAsyncAction =
+      AsyncAction('_ReceitasStoreBase.favoritarReceita', context: context);
+
+  @override
+  Future<dynamic> favoritarReceita(Receita receita) {
+    return _$favoritarReceitaAsyncAction
+        .run(() => super.favoritarReceita(receita));
+  }
+
+  late final _$verificaReceitaFavoritaAsyncAction = AsyncAction(
+      '_ReceitasStoreBase.verificaReceitaFavorita',
+      context: context);
+
+  @override
+  Future<dynamic> verificaReceitaFavorita(String id) {
+    return _$verificaReceitaFavoritaAsyncAction
+        .run(() => super.verificaReceitaFavorita(id));
+  }
+
+  late final _$desfazerFavoritoAsyncAction =
+      AsyncAction('_ReceitasStoreBase.desfazerFavorito', context: context);
+
+  @override
+  Future<dynamic> desfazerFavorito(String id) {
+    return _$desfazerFavoritoAsyncAction.run(() => super.desfazerFavorito(id));
   }
 
   @override
   String toString() {
     return '''
-state: ${state}
+state: ${state},
+isFavorite: ${isFavorite}
     ''';
   }
 }

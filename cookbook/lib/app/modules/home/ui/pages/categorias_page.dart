@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../widgets/grid_list_categorias.dart';
+
 class CategoriasPage extends StatefulWidget {
   final String title;
   const CategoriasPage({Key? key, this.title = 'CategoriasPage'})
@@ -32,34 +34,7 @@ class CategoriasPageState extends State<CategoriasPage> {
             if (store.state is LoadingCategoriaState) {
               return const Loading();
             } else if (store.state is SuccessCategoriaState) {
-              return GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemCount: store.categorias!.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: (() {
-                      Navigator.pushNamed(context, "/comidas",
-                          arguments: store.categorias![index].nome);
-                    }),
-                    child: Card(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.network(store.categorias![index].url),
-                          Text(
-                            store.categorias![index].nome,
-                            style: const TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              );
+              return GridListCategorias(store: store);
             } else {
               return const Error();
             }

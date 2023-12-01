@@ -13,6 +13,7 @@ class Error extends StatelessWidget {
             Icon(
               Icons.dangerous,
               color: Colors.red,
+              size: 30,
             )
           ],
         ),

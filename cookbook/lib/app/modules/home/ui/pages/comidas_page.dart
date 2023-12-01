@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../widgets/listagem_comida.dart';
+
 class ComidasPage extends StatefulWidget {
   const ComidasPage({Key? key}) : super(key: key);
   @override
@@ -14,6 +16,7 @@ class ComidasPage extends StatefulWidget {
 
 class ComidasPageState extends State<ComidasPage> {
   ComidasStore store = Modular.get<ComidasStore>();
+  String urlPagina = "/receitas";
 
   @override
   void initState() {
@@ -36,31 +39,7 @@ class ComidasPageState extends State<ComidasPage> {
             if (store.state is LoadingComidaState) {
               return const Loading();
             } else if (store.state is SuccessComidaState) {
-              return ListView.builder(
-                itemCount: store.comidas!.length,
-                itemBuilder: ((context, index) {
-                  return GestureDetector(
-                    child: Card(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          backgroundImage: NetworkImage(
-                            store.comidas![index].url,
-                          ),
-                          radius: 25.0,
-                        ),
-                        title: Text(
-                          store.comidas![index].nome,
-                        ),
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.pushNamed(context, "/receitas",
-                          arguments: store.comidas![index].id);
-                    },
-                  );
-                }),
-              );
+              return ListagemComida(store: store, urlPagina: urlPagina);
             } else {
               return const Error();
             }

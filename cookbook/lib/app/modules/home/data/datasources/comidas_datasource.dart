@@ -11,7 +11,6 @@ class ComidasDatasource implements IComidasDatasource {
 
   @override
   Future get(String categoria) async {
-    print("datasource");
     var response = await dio
         .get("https://www.themealdb.com/api/json/v1/1/filter.php?c=$categoria");
     if (response.statusCode == 200) {

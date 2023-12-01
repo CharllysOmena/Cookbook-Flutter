@@ -7,7 +7,9 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Cookbook',
-      theme: ThemeData(primarySwatch: Colors.amber),
+      theme: ThemeData(
+          primarySwatch: Colors.amber,
+          scaffoldBackgroundColor: Colors.amber[50]),
     ).modular();
   }
 }

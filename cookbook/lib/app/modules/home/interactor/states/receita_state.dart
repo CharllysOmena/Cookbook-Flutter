@@ -7,8 +7,8 @@ class StartReceitaState implements ReceitaState {
 }
 
 class SuccessReceitaState implements ReceitaState {
-  final List<Receita> receitas;
-  const SuccessReceitaState({required this.receitas});
+  final Receita receita;
+  const SuccessReceitaState({required this.receita});
 }
 
 class ErrorExceptionReceitaState implements ReceitaState {

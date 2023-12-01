@@ -21,7 +21,10 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
 
   @override
   Widget build(BuildContext context) {
-    List<StatefulWidget> telas = [CategoriasPage(), FavoritosPage()];
+    List<StatefulWidget> telas = [
+      const CategoriasPage(),
+      const FavoritosPage()
+    ];
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

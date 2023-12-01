@@ -8,7 +8,7 @@ class Polaroid extends StatelessWidget {
     required this.receita,
   }) : super(key: key);
 
-  final List<Receita> receita;
+  final Receita receita;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +22,13 @@ class Polaroid extends StatelessWidget {
             child: Column(
               children: [
                 Image.network(
-                  receita[0].url,
+                  receita.url,
                   width: 200,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: Text(
-                    receita[0].nome,
+                    receita.nome,
                     style: const TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
