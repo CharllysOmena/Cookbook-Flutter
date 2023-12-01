@@ -4,7 +4,7 @@ Esse projeto foi desenvolvido utilizando flutter com o intuito de demonstrar o c
 ## Telas do projeto
 
 <p>
-  <img width="300" src="livrodereceitas\lib\app\images\livrodereceita.gif">
+  <img width="300" src="assets\livrodereceita.gif">
 </p>
 
 ## Principais tecnologias usadas
