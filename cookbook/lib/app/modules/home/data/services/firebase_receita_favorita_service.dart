@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract interface class IFirebaseReceitaFavoritaService {
-  Future<FirebaseReceitaFavoritaState> get();
+  Stream<List<Receita>> get();
   Future<FirebaseReceitaFavoritaState> post(Receita receita);
   Future<FirebaseReceitaFavoritaState> delete(String id);
   Future<FirebaseReceitaFavoritaState> findById(String id);
@@ -31,24 +31,12 @@ class FirebaseReceitaFavoritaService
   }
 
   @override
-  Future<FirebaseReceitaFavoritaState> get() async {
-    try {
-      List<Receita> receitas = [];
-      QuerySnapshot querySnapshot =
-          await receitasCollection.where("userId", isEqualTo: user!.uid).get();
-      if (querySnapshot.docs.isNotEmpty) {
-        List<DocumentSnapshot> documentos = querySnapshot.docs;
-        receitas =
-            documentos.map((data) => ReceitaAdapter2.fromJson(data)).toList();
-
-        return SuccessGetFirebaseReceitaFavoritaState(receitas: receitas);
-      } else {
-        return const EmptyFirebaseReceitaFavoritaState();
-      }
-    } catch (e) {
-      return const ErrorExceptionFirebaseReceitaFavoritaState();
-    }
-  }
+  Stream<List<Receita>> get() => receitasCollection
+      .where("userId", isEqualTo: user!.uid)
+      .snapshots()
+      .map((snapshot) => snapshot.docs
+          .map((doc) => ReceitaAdapter2.fromJson(doc.data()))
+          .toList());
 
   @override
   Future<FirebaseReceitaFavoritaState> post(Receita receita) async {

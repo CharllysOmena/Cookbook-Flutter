@@ -1,4 +1,3 @@
-import 'package:cookbook/app/modules/home/interactor/states/firebase_receita_favorita_state.dart';
 import 'package:cookbook/app/modules/home/interactor/states/receita_state.dart';
 import 'package:cookbook/app/modules/home/ui/widgets/detalhes_receita.dart';
 import 'package:cookbook/app/modules/home/ui/widgets/loading.dart';

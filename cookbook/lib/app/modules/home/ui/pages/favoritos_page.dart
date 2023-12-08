@@ -1,9 +1,7 @@
-import 'package:cookbook/app/modules/home/interactor/states/firebase_receita_favorita_state.dart';
 import 'package:cookbook/app/modules/home/interactor/stores/favoritos_store.dart';
 import 'package:cookbook/app/modules/home/ui/widgets/loading.dart';
 import 'package:cookbook/app/modules/home/ui/widgets/error.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../widgets/empty.dart';
@@ -29,20 +27,22 @@ class FavoritosPageState extends State<FavoritosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Observer(
-        builder: (_) {
-          if (store.state is LoadingFirebaseReceitaFavoritaState) {
-            return const Loading();
-          } else if (store.state is SuccessGetFirebaseReceitaFavoritaState) {
-            return ListagemComida(store: store, urlPagina: urlPagina);
-          } else if (store.state
-              is ErrorExceptionFirebaseReceitaFavoritaState) {
-            return const Error();
-          } else {
+        body: StreamBuilder(
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return const Error();
+        } else if (snapshot.hasData) {
+          store.comidas = snapshot.data!;
+          if (store.comidas!.isEmpty) {
             return const Empty();
+          } else {
+            return ListagemComida(store: store, urlPagina: urlPagina);
           }
-        },
-      ),
-    );
+        } else {
+          return const Loading();
+        }
+      },
+      stream: store.getReceitasFavoritas(),
+    ));
   }
 }
