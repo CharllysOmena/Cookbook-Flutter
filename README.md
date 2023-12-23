@@ -1,5 +1,5 @@
 # Você chegou ao aplicativo Cookbook
-Esse projeto foi desenvolvido utilizando flutter com o intuito de demonstrar o consumo de RestApi, utilização do firebase auth, firebase firestore e algumas ideias de UI.
+Esse projeto foi desenvolvido utilizando flutter com o intuito de demonstrar a integração com RestApi, utilização do firebase auth, firebase firestore e algumas ideias de UI.
 
 ## Telas do projeto
 
